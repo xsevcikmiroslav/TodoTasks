@@ -1,0 +1,47 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Todo Tasks";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-page="TodoTaskAdd">Add New Todo Task</a>
+</p>
+
+
+<table class="table">
+    <tbody>
+        <tr>
+            <th width="20%">Name</th>
+            <th width="20%">Priority</th>
+            <th width="20%">Status</th>
+            <th width="20%"></th>
+            <th width="20%"></th>
+        </tr>
+        @foreach (var todoTask in this.Model.TodoTaskRepository.GetAllTodoTasks())
+        {
+            <tr>
+                <td>
+                    <a asp-page="TodoTaskEdit" asp-route-Id="@todoTask.Id">@todoTask.Name</a>
+                </td>
+                <td>
+                    @todoTask.Priority
+                </td>
+                <td>
+                    @todoTask.Status
+                </td>
+                <td>
+                    <a asp-page="TodoTaskEdit" asp-route-id="@todoTask.Id">Edit</a>
+                </td>
+                <td>
+                    @if (todoTask.Status == ToDo.Models.Status.Completed)
+                    {
+                        <a asp-page="TodoTaskDelete" asp-route-id="@todoTask.Id">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

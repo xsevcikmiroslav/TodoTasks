@@ -1,0 +1,36 @@
+﻿@page
+@model ToDoTasks.Pages.TodoTaskDeleteModel
+
+@{
+    ViewData["Title"] = "Delete Todo Task";
+}
+
+<h3>Delete this Todo Task?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TodoTask.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TodoTask.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TodoTask.Priority)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TodoTask.Priority)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TodoTask.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TodoTask.Status)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="TodoTask.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>

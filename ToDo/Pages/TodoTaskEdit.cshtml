@@ -1,0 +1,54 @@
+﻿@page
+@model ToDoTasks.Pages.TodoTaskEditModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Edit Todo Task";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <table class="form">
+        <tbody>
+            <tr>
+                <td>
+                    <input type="hidden" asp-for="TodoTask.Id" />
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TodoTask.Name)
+                </th>
+                <td><input asp-for="TodoTask.Name" /></td>
+                <div asp-validation-summary="ModelOnly"></div>
+                <span asp-validation-for="TodoTask.Name" class="text-danger"></span>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TodoTask.Priority)
+                </th>
+                <td><input asp-for="TodoTask.Priority" /></td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TodoTask.Status)
+                </th>
+                <td>
+                    <select asp-for="TodoTask.Status" asp-items="Model.Statuses"></select>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" value="Save" />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
