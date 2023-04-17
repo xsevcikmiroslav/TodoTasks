@@ -36,7 +36,7 @@
                     <a asp-page="TodoTaskEdit" asp-route-id="@todoTask.Id">Edit</a>
                 </td>
                 <td>
-                    @if (todoTask.Status == ToDo.Models.Status.Completed)
+                    @if (todoTask.Status == ToDoTasks.Models.Status.Completed)
                     {
                         <a asp-page="TodoTaskDelete" asp-route-id="@todoTask.Id">Delete</a>
                     }

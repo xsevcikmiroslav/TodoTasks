@@ -1,8 +1,12 @@
-using ToDo.BusinessObjects;
 using ToDoTasks.Repositories;
 using ToDoTasks.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAutoMapper(mc =>
+{
+    mc.AddProfile(new ToDoTasks.Automapper.AutomapperConfiguration());
+});
 
 builder.Services.AddScoped<ITodoTaskRepository, TodoTaskRepository>();
 

@@ -1,13 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using ToDo.Models;
 
 namespace ToDoTasks.Models
 {
-    public class TodoTaskDelete : TodoTask
+    public class TodoTaskDelete : TodoTask, IValidatableObject
     {
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (Status != ToDo.Models.Status.Completed)
+            if (Status != Models.Status.Completed)
             {
                 return new ValidationResult[]
                 {

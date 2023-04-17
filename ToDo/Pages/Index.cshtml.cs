@@ -5,14 +5,12 @@ namespace ToDo.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         private readonly ITodoTaskRepository _todoTaskRepository; 
 
         public ITodoTaskRepository TodoTaskRepository => _todoTaskRepository;
 
-        public IndexModel(ILogger<IndexModel> logger, ITodoTaskRepository todoTaskRepository)
+        public IndexModel(ITodoTaskRepository todoTaskRepository)
         {
-            _logger = logger;
             _todoTaskRepository = todoTaskRepository;
         }
 

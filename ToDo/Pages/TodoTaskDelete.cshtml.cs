@@ -1,6 +1,7 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ToDo.Models;
+using ToDoTasks.Models;
 using ToDoTasks.Repositories.Interfaces;
 
 namespace ToDoTasks.Pages
@@ -8,15 +9,17 @@ namespace ToDoTasks.Pages
     public class TodoTaskDeleteModel : PageModel
     {
         private readonly ITodoTaskRepository _todoTaskRepository;
+        private readonly IMapper _mapper;
 
-        public TodoTaskDeleteModel(ITodoTaskRepository todoTaskRepository)
+        public TodoTaskDeleteModel(ITodoTaskRepository todoTaskRepository, IMapper mapper)
         {
             _todoTaskRepository = todoTaskRepository;
+            _mapper = mapper;
         }
 
         public void OnGet(int id)
         {
-            TodoTask = _todoTaskRepository.GetById(id);
+            TodoTaskDelete = _mapper.Map<TodoTaskDelete>(_todoTaskRepository.GetById(id));
         }
 
         public IActionResult OnPost()
@@ -26,12 +29,12 @@ namespace ToDoTasks.Pages
                 return Page();
             }
 
-            _todoTaskRepository.DeleteTodoTask(TodoTask.Id);
+            _todoTaskRepository.DeleteTodoTask(TodoTaskDelete.Id);
 
             return RedirectToPage("TodoTaskActionConfirmation", new { action = "deleted" });
         }
 
         [BindProperty]
-        public TodoTask TodoTask { get; set; }
+        public TodoTaskDelete TodoTaskDelete { get; set; }
     }
 }

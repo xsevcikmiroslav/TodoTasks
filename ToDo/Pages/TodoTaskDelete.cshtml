@@ -8,29 +8,34 @@
 <h3>Delete this Todo Task?</h3>
 <div>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TodoTask.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TodoTask.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TodoTask.Priority)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TodoTask.Priority)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TodoTask.Status)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TodoTask.Status)
-        </dd>
-    </dl>
-
     <form method="post">
-        <input type="hidden" asp-for="TodoTask.Id" />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TodoTaskDelete.Name)
+            </dt>
+            <dd class="col-sm-10">
+                <input type="hidden" asp-for="TodoTaskDelete.Name" />
+                @Html.DisplayFor(model => model.TodoTaskDelete.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TodoTaskDelete.Priority)
+            </dt>
+            <dd class="col-sm-10">
+                <input type="hidden" asp-for="TodoTaskDelete.Priority" />
+                @Html.DisplayFor(model => model.TodoTaskDelete.Priority)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TodoTaskDelete.Status)
+            </dt>
+            <dd class="col-sm-10">
+                <input type="hidden" asp-for="TodoTaskDelete.Status" />
+                @Html.DisplayFor(model => model.TodoTaskDelete.Status)
+            </dd>
+        </dl>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <input type="hidden" asp-for="TodoTaskDelete.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" />
     </form>
 </div>

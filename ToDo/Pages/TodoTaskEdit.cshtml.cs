@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ToDo.Models;
+using ToDoTasks.Models;
 using ToDoTasks.Repositories.Interfaces;
 
 namespace ToDoTasks.Pages

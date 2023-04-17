@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using ToDoTasks.Repositories;
 
-namespace ToDo.Models
+namespace ToDoTasks.Models
 {
     public enum Status
     {

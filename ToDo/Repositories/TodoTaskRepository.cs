@@ -1,47 +1,18 @@
-﻿using ToDo.Models;
+﻿using ToDoTasks.Models;
 using ToDoTasks.Repositories.Interfaces;
 
 namespace ToDoTasks.Repositories
 {
     public class TodoTaskRepository : ITodoTaskRepository
     {
-        private static readonly IDictionary<int, TodoTask> _tasks = new Dictionary<int, TodoTask>
-        {
-            {
-                1,
-                new TodoTask
-                {
-                    Id = 1,
-                    Name = "Task 1",
-                    Priority = 5,
-                    Status = Status.NotStarted
-                }
-            },
-            {
-                2,
-                new TodoTask
-                {
-                    Id = 2,
-                    Name = "Task 2",
-                    Priority = 10,
-                    Status = Status.Completed
-                }
-            },
-            {
-                3,
-                new TodoTask
-                {
-                    Id = 3,
-                    Name = "Task 3",
-                    Priority = 1,
-                    Status = Status.InProgress
-                }
-            },
-        };
+        private static readonly IDictionary<int, TodoTask> _tasks = new Dictionary<int, TodoTask> { };
 
         public TodoTask GetById(int id)
         {
-            return _tasks[id];
+            return
+                _tasks.Any() && _tasks.ContainsKey(id)
+                ? _tasks[id]
+                : null;
         }
 
         public IEnumerable<TodoTask> GetAllTodoTasks()
@@ -56,7 +27,7 @@ namespace ToDoTasks.Repositories
 
         public void AddTodoTask(TodoTask todoTask)
         {
-            var id = _tasks.Keys.Max() + 1;
+            var id = _tasks.Any() ? _tasks.Keys.Max() + 1 : 1;
             todoTask.Id = id;
             _tasks[id] = todoTask;
         }
