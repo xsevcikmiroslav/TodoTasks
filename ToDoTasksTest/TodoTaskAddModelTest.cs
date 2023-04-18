@@ -31,7 +31,7 @@ namespace ToDoTasksTest
         }
 
         [TestMethod]
-        public void OnPost_ModelValid_IsNotRedirectedToConfirmPage()
+        public void OnPost_ModelValid_IsRedirectedToConfirmPage()
         {
             var pageModel = new TodoTaskAddModel(_mockRepository.Object);
             pageModel.ModelState.Clear();
