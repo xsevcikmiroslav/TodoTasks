@@ -6,7 +6,7 @@ namespace ToDoTasksTest
     [TestClass]
     public class TodoTaskRepositoryTest
     {
-        [TestInitialize]
+        [TestCleanup]
         public void DeleteAllTasksFromRepo()
         {
             var repository = new TodoTaskRepository();
